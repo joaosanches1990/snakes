@@ -1,7 +1,7 @@
   require 'ruby2d'
 
   set background: 'navy'
-  set fps_cap: 15
+  set fps_cap: 20
 
 
   GRID_SIZE = 20
@@ -152,19 +152,25 @@ end
       if ['up', 'down', 'left', 'right'].include?(event.key)
         if snake.can_change_direction_to?(event.key)
         snake.direction = event.key
-      end
+        end
+      elsif event.key == 'r'
+        snake = Snake.new
+        game = Game.new
+      elsif event.key == 'escape'
+        close
+      else
     end
   end
 
 
 
   #get out of the game
-  on :key_down do |k|
-    key = k['key']
-    case key
-    when 'escape'
-      close
-    end
-  end
+  #on :key_down do |k|
+  #  key = k['key']
+  #  case key
+  #  when 'escape'
+  #    close
+  #  end
+  #end
 
   show
